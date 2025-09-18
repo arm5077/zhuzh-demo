@@ -23,14 +23,27 @@ export const OverlayTray: React.FC<OverlayTrayProps> = ({
   onClose,
   type
 }) => {
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    // Only close if clicking the backdrop itself, not its children
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  const handleTrayClick = (e: React.MouseEvent) => {
+    // Prevent clicks inside the tray from bubbling up to the backdrop
+    e.stopPropagation();
+  };
+
   return (
     <div 
       className={classNames(styles.overlay, {
         [styles.visible]: isVisible,
         [styles.hidden]: !isVisible
       })}
+      onClick={handleBackdropClick}
     >
-      <div className={styles.tray}>
+      <div className={styles.tray} onClick={handleTrayClick}>
         <div className={styles.header}>
           <h3 className={styles.title}>
             {getOverlayTitle(type)}

@@ -168,6 +168,16 @@ export const RoomDesigner: React.FC<RoomDesignerProps> = () => {
     }
   };
 
+  const handleDownloadImage = () => {
+    const currentImageSrc = getCurrentImageSrc(choices);
+    const link = document.createElement('a');
+    link.href = currentImageSrc;
+    link.download = `zhuzh-room-design-${Date.now()}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div 
       className={classNames(styles.container, {
@@ -197,8 +207,8 @@ export const RoomDesigner: React.FC<RoomDesignerProps> = () => {
               <Image
                 src="/logo.svg"
                 alt="Zhuzh"
-                width={268}
-                height={83}
+                width={300}
+                height={Math.round(300 * 83 / 268)} // preserve ratio based on original 268x83
                 priority
               />
             </div>
@@ -300,7 +310,7 @@ export const RoomDesigner: React.FC<RoomDesignerProps> = () => {
                 Warning: Zhuzhing may result in a far more beautiful home.
               </div>
               <div className={styles.downloadButton}>
-                <Button onClick={() => { }} variant="secondary">
+                <Button onClick={handleDownloadImage} variant="secondary">
                   Download photo
                 </Button>
               </div>

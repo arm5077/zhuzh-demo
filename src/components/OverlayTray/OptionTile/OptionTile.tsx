@@ -36,6 +36,7 @@ export const OptionTile: React.FC<OptionTileProps> = ({
             alt={option.alt}
             width={120}
             height={120}
+            draggable={false}
             className={styles.optionImage}
           />
         </div>

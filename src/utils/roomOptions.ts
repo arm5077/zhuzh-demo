@@ -3,9 +3,9 @@ import { Option } from '@/types';
 // Plus button positions from Figma design
 export const PLUS_BUTTON_POSITIONS = {
   overheadLight: { x: 10.4, y: 3.7 }, // left: 41px, top: 22px
-  couch: { x: 15.5, y: 66.2 }, // left: 61px, top: 56px  
-  coffeeTable: { x: 70.0, y: 62.5 }, // left: 275px, top: 369px
-  wallColor: { x: 40.0, y: 75.1 } // left: 157px, top: 443px
+  couch: { x: 70.0, y: 62.5 }, // left: 61px, top: 56px  
+  coffeeTable: { x: 40.0, y: 75.1 }, // left: 275px, top: 369px
+  wallColor: { x: 20, y: 35 } // left: 157px, top: 443px
 } as const;
 
 // Progress steps for analysis

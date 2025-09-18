@@ -261,14 +261,18 @@
   flex-direction: column;
   gap: 24px;
   align-items: center;
-  width: 276px;
   opacity: 0;
   transform: translateY(30px);
 }
 
 .logoContainer {
-  width: 268px;
-  height: 83px;
+  width: 350px;
+  aspect-ratio: 350/108;
+
+  @media (min-width: 610px) {
+    width: 600px;
+    max-width: 600px;
+  }
   
   img {
     width: 100%;
@@ -311,7 +315,7 @@
 }
 
 .bottom {
-  height: 250px;
+  
   position: relative;
   z-index: 1;
 }
