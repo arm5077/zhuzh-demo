@@ -1,0 +1,76 @@
+// Color variables
+$wall-colors: (
+  "E8D7D6": #E8D7D6,
+  "CFCDD6": #CFCDD6,
+  "C8CAB2": #C8CAB2
+);
+
+// Design system colors
+$teal: #28d9ce;
+$magenta: #b0318c;
+$purple: #7f2fff;
+$blue: #285ad9;
+$white-66: rgba(255, 255, 255, 0.66);
+$white-33: rgba(255, 255, 255, 0.33);
+
+// Background gradient
+$background-gradient: linear-gradient(94deg, var(--gradient-purple, #7F2FFF) 32.38%, var(--gradient-blue, #285AD9) 79.91%);
+
+// Spacing
+$border-width: 2px;
+$border-radius: 8px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Z-index layers
+$z-overlay: 1000;
+$z-plus-buttons: 900;
+$z-image: 100;
+
+// Mixins
+@mixin gradient-border($gradient) {
+  background: $gradient;
+  padding: $border-width;
+  border-radius: $border-radius;
+  
+  > * {
+    background: black;
+    border-radius: calc($border-radius - $border-width);
+  }
+}
+
+@mixin heartbeat-animation {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@mixin loading-gradient {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: loading-sweep 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes loading-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}

@@ -1,0 +1,374 @@
+@use '../../theme/vars' as *;
+
+.container {
+  //min-height: 100vh; // Fallback for SSR
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+  background: $background-gradient;
+
+  max-width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.containerVisible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.disclaimer {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  color: $white-66;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  padding: 24px 0px;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.disclaimerVisible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.imageSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  
+  max-height: 80%;
+  opacity: 0;
+  transform: translateY(30px);
+  
+  // Use aspect-ratio to maintain proportions - width will be calculated from height
+  aspect-ratio: 1 / 1.5;
+
+  &.fullSizeImage {
+    max-height: 100%;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-lg;
+  width: 327px;
+  max-width: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+// When analyzing, position controls absolutely at bottom
+.controls.analyzing {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  width: 327px;
+  max-width: calc(100% - 40px);
+}
+
+.progressWrapper {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.progressVisible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.downloadSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 0px;
+  
+  &.downloadSectionVisible {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px;
+  }
+}
+
+.instructionText {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
+  color: white;
+  width: 100%;
+  
+  p {
+    margin: 0;
+  }
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.warningText {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  color: $white-66;
+  width: 251px;
+}
+
+.downloadButton {
+  width: auto;
+}
+
+// Intro content section
+.introContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  
+}
+
+.introVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  
+  .logoLockup {
+    animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+  }
+  
+  .buttonContainer {
+    animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+  }
+}
+
+.introExiting {
+  opacity: 0;
+  transform: translateY(-40px);
+  pointer-events: none;
+  
+  .logoLockup {
+    animation: slideOutUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0s both;
+  }
+  
+  .buttonContainer {
+    animation: slideOutUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+  }
+}
+
+// Interactive content section
+.interactiveContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px 40px 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  height: 100%;
+}
+
+.interactiveContent.interactiveVisible {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  height: 100%;
+}
+
+.interactiveControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  padding: 40px 20px;
+}
+
+// During analyzing, keep relative positioning to contain progress bar
+.interactiveControls.analyzing {
+  position: relative;
+  
+}
+
+.interactiveVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  
+  .imageSection {
+    animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+  }
+  
+  .controls {
+    animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+  }
+}
+
+// When analysis is complete, transition to normal flow
+.interactiveControls.interactiveComplete {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+}
+
+// Intro-specific styles
+.logoLockup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  width: 276px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.logoContainer {
+  width: 268px;
+  height: 83px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.title {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2;
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
+.buttonContainer {
+  width: 100%;
+  max-width: 350px;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+// Container sections
+.top {
+  position: relative;
+  z-index: 1;
+}
+
+.middle {
+  position: relative;
+  flex-shrink: 1;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bottom {
+  height: 250px;
+  position: relative;
+  z-index: 1;
+}
+
+// Intro button container
+.introButtonContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.introButtonContainer.introVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.introButtonContainer.introExiting {
+  opacity: 0;
+  transform: translateY(-40px);
+  pointer-events: none;
+}
+
+// Button container visibility states
+.buttonContainerVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Keyframe animations
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}

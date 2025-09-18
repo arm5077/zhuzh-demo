@@ -1,0 +1,12 @@
+@use './styles/theme.scss' as theme;
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(93.95deg, #7F2FFF 32.38%, #285AD9 79.91%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: theme.$spacing-lg;
+  box-sizing: border-box;
+}

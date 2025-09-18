@@ -1,0 +1,60 @@
+@use '../../theme/vars' as *;
+
+.plusButton {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: $z-plus-buttons;
+  
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  &:active {
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  
+  svg {
+    transition: transform $transition-fast;
+  }
+  
+  &:hover svg {
+    transform: rotate(90deg);
+  }
+}
+
+.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: plusButtonEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes plusButtonEnter {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

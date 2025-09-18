@@ -1,0 +1,78 @@
+.optionTile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: fit-content;
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.optionImage {
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.colorSwatch {
+  width: 106px;
+  height: 120px;
+  border-radius: 8px;
+  border: none;
+}
+
+.optionLabel {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.optionName {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.optionPrice {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.66);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+// Selected state styling
+.optionTile.selected {
+  .imageContainer {
+    border-color: #7f2fff;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+  }
+  
+  .colorSwatch {
+    border: 2px solid #7f2fff;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+  }
+}
